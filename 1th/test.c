@@ -114,6 +114,9 @@ int process_ball(char input_sequence)
 	if(match_flag == TRUE)		//Æ¥Åä
 	{
 		num_now = 0;			//Çå¿ÕÇò
+		num_red = 0;
+		num_yellow = 0;
+		num_blue = 0;
 	}
 
 	return 0;
