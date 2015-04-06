@@ -1,0 +1,21 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+N	test_2.c	2;"	d	file:
+N	test_2.cpp	2;"	d	file:
+cnt	test_2.c	/^int cnt[N];	\/\/每个模块被触发的次数$/;"	v
+cnt	test_2.cpp	/^int cnt[N];	\/\/每个模块被触发的次数$/;"	v
+e	test_2.c	/^int e[N][3];\/\/模块N的输出，最多有3个$/;"	v
+e	test_2.cpp	/^int e[N][3];\/\/模块N的输出，最多有3个$/;"	v
+k	test_2.c	/^int k[N];	\/\/每个模块输出个数 $/;"	v
+k	test_2.cpp	/^int k[N];	\/\/每个模块输出个数 $/;"	v
+main	test_2.c	/^int main()$/;"	f
+main	test_2.cpp	/^int main()$/;"	f	signature:()
+s	test_2.c	/^int s[N];	\/\/每个模块的触发信号$/;"	v
+s	test_2.cpp	/^int s[N];	\/\/每个模块的触发信号$/;"	v
+signal	test_2.c	/^int signal;$/;"	v
+signal	test_2.cpp	/^int signal;$/;"	v
+std	test_2.c	/^using namespace std;$/;"	v
