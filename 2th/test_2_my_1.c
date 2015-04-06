@@ -2,7 +2,6 @@
 #include <string.h>
 
 #define N 100010
-#define E_MAX	100010
 int signal_init[N];	//初始信号
 int s[N];	//每个模块的触发信号
 int k[N];	//每个模块输出个数 
@@ -13,7 +12,7 @@ int n;					//模块个数
 
 typedef struct 			//每个信号可以触发的模块列表
 {
-	int s;		//触发信号
+	int s;					//触发信号
 	int k;					//输出个数
 	int e[3];				//输出信号
 	int count;				//被触发次数	
@@ -29,7 +28,7 @@ int signal_triger(int signal)
 	{
 		if(module[i].s == signal)
 		{
-			module[i].count++;
+			module[i].count = (module[i].count + 1) % 142857;
 			for(j = 0; j < module[i].k; j++)	//触发其他模块
 			{
 				signal_triger(module[i].e[j]);	//递归调用本函数
@@ -48,68 +47,59 @@ int main()
     int t;					//测试次数
 	int m;					//初始信号个数
 
-	memset(module, 0 ,sizeof(module));
-	
-	scanf("%d%d", &n, &m);	//获取模块个数，初始信号数
-	printf("input:\n");		
-	printf("%d %d\n", n, m);		
-	for(i = 0; i < m; i++)	//获取初始信号
-	{
-		scanf("%d", &value);		
-		signal_init[i] = value;
-	}
-	for(i = 0; i < m; i++)
-	{
-		printf("%d ", signal_init[i]);		
-	}
-	printf("\n");
-	
-	for(i = 0; i < n; i++)	//获取每个模块的输入和输出
-	{
-		scanf("%d%d", &module[i].s, &module[i].k);
-		for(j = 0; j < module[i].k; j++)
+	scanf("%d", &t);		//获取测试次数
+
+	while(t--)
+	{	
+		memset(module, 0 ,sizeof(module));
+		scanf("%d%d", &n, &m);	//获取模块个数，初始信号数
+		printf("input:\n");		
+		printf("%d %d\n", n, m);		
+		for(i = 0; i < m; i++)	//获取初始信号
 		{
-			scanf("%d", &module[i].e[j]);
+			scanf("%d", &value);		
+			signal_init[i] = value;
 		}
-	}
-		
-	for(i = 0; i < n; i++)
-	{
-		printf("%d %d ", module[i].s, module[i].k);
-		for(j = 0; j < module[i].k; j++)
+		for(i = 0; i < m; i++)
 		{
-			printf("%d ", module[i].e[j]);
+			printf("%d ", signal_init[i]);		
 		}
 		printf("\n");
-	}		
+		
+		for(i = 0; i < n; i++)	//获取每个模块的输入和输出
+		{
+			scanf("%d%d", &module[i].s, &module[i].k);
+			for(j = 0; j < module[i].k; j++)
+			{
+				scanf("%d", &module[i].e[j]);
+			}
+		}
+			
+		for(i = 0; i < n; i++)
+		{
+			printf("%d %d ", module[i].s, module[i].k);
+			for(j = 0; j < module[i].k; j++)
+			{
+				printf("%d ", module[i].e[j]);
+			}
+			printf("\n");
+		}		
 
-	for(i = 0; i < m; i++)	//触发模块
-	{
-		signal_triger(signal_init[i]);	
-	}	
+		for(i = 0; i < m; i++)	//触发模块
+		{
+			signal_triger(signal_init[i]);	
+		}	
 
-	printf("output\n");		
-	for(i = 0; i < n; i++)	//打印所有模块被触发次数
-	{
-		printf("%d ", module[i].count);
+		printf("output\n");		
+		for(i = 0; i < n; i++)	//打印所有模块被触发次数
+		{
+			printf("%d ", module[i].count);
+		}
+
+		printf("\n");
 	}
 
-	printf("\n");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*/
+/*
     scanf("%d", &t);		//获取测试次数
     while(t --)				
     {
